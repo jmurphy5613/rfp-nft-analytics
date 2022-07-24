@@ -4,13 +4,20 @@ interface CollectionGridProps {
     collections: any[];
 }
 
-const CollectionGrid = () => {
+const CollectionGrid:React.FC<CollectionGridProps> = ({ collections }) => {
 
 
 
     return (
-        <div>
-
+        <div className={styles.grid}>
+            {collections.map((collection: any) => {
+                return (
+                    <div className={styles["grid-item"]}>
+                        <div style={{ backgroundImage: `url(${collection.image})` }} className={styles.image} />
+                        <h2 className={styles.label}>{collection.name}</h2>
+                    </div>
+                )
+            })}
         </div>
     )
 }
